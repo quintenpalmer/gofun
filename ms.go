@@ -19,12 +19,10 @@ func inner_ms(in_list []int, out_chan chan []int) {
 	} else if len(in_list) == 1 {
 		out_chan <- in_list
 	} else {
-		left_in_chan := make(chan []int)
-		right_in_chan := make(chan []int)
-		go inner_ms(in_list[:half],left_in_chan)
-		go inner_ms(in_list[half:],right_in_chan)
-		left := <-left_in_chan
-		right := <-right_in_chan
+		in_chan := make(chan []int)
+		go inner_ms(in_list[:half],in_chan)
+		go inner_ms(in_list[half:],in_chan)
+		left, right := <-in_chan, <-in_chan
 		out_list := make([]int, 0)
 		for i := 0; i < len(in_list); i++ {
 			if (len(right) == 0) || (len(left) > 0 && len(right) > 0 && right[0] > left[0]) {
