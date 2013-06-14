@@ -53,6 +53,13 @@ func main() {
 				to_sort := util.Rlist(size)
 				fmt.Println(to_sort)
 			}
+		} else if os.Args[1] == "fib" {
+			var err error
+			size, err = strconv.Atoi(os.Args[2])
+			if err != nil {
+				fmt.Println(err)
+			}
+			fmt.Println(util.FibIndex(size))
 		}
 	}
 }
