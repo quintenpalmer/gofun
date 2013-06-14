@@ -13,7 +13,7 @@ func die(message string) {
 }
 
 func help() {
-	die("Usage : \nms <size> [rand]\nrlist <size>")
+	die("Usage : \nms <size> [rand]\nrlist <size>\nfib <size> [list]")
 }
 
 func main() {
