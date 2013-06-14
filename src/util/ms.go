@@ -8,11 +8,7 @@ func Ms(in_list []int) []int {
 
 func rec_ms(in_list []int, out_chan chan []int) {
 	half := len(in_list)/2
-	if len(in_list) == 2 && (in_list[0] > in_list[1]) {
-		out_chan <- []int{in_list[1],in_list[0]}
-	} else if len(in_list) == 1 {
-		out_chan <- in_list
-	} else {
+	if len(in_list) > 2 {
 		in_chan := make(chan []int)
 		go rec_ms(in_list[:half],in_chan)
 		go rec_ms(in_list[half:],in_chan)
@@ -28,16 +24,16 @@ func rec_ms(in_list []int, out_chan chan []int) {
 			}
 		}
 		out_chan <- out_list
+	} else if len(in_list) == 2 && (in_list[0] > in_list[1]) {
+		out_chan <- []int{in_list[1],in_list[0]}
+	} else {
+		out_chan <- in_list
 	}
 }
 
 func simple_ms(in_list []int) []int {
 	half := len(in_list)/2
-	if len(in_list) == 2 && (in_list[0] > in_list[1]) {
-		return []int{in_list[1],in_list[0]}
-	} else if len(in_list) == 1 {
-		return in_list
-	} else {
+	if len(in_list) > 2 {
 		left := simple_ms(in_list[:half])
 		right := simple_ms(in_list[half:])
 		out_list := make([]int, 0)
@@ -51,5 +47,10 @@ func simple_ms(in_list []int) []int {
 			}
 		}
 		return out_list
+	}
+	if len(in_list) == 2 && (in_list[0] > in_list[1]) {
+		return []int{in_list[1],in_list[0]}
+	} else {
+		return in_list
 	}
 }
