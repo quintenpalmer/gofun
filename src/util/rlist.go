@@ -1,10 +1,7 @@
-package main
+package util
 
 import (
 	"math/rand"
-	"os"
-	"fmt"
-	"strconv"
 )
 
 func shuffle(in_list []int) []int {
@@ -18,25 +15,10 @@ func shuffle(in_list []int) []int {
 	return out_list
 }
 
-func rlist(size int) []int {
+func Rlist(size int) []int {
 	list := make([]int,size)
 	for i:=0; i < size; i++ {
 		list[i] = size - i
 	}
 	return shuffle(list)
-}
-
-func main() {
-	size := 26
-	if len(os.Args) < 2 {
-		fmt.Println("using default size of %d",size)
-	} else {
-		var err error
-		size, err = strconv.Atoi(os.Args[1])
-		if err != nil {
-			fmt.Println(err)
-		}
-	}
-	to_sort := rlist(size)
-	fmt.Println(to_sort)
 }

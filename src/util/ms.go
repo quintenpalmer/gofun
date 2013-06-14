@@ -1,12 +1,6 @@
-package main
+package util
 
-import (
-	"fmt"
-	"os"
-	"strconv"
-)
-
-func ms(in_list []int) []int {
+func Ms(in_list []int) []int {
 	in_chan := make(chan []int)
 	go rec_ms(in_list,in_chan)
 	return <- in_chan
@@ -58,24 +52,4 @@ func simple_ms(in_list []int) []int {
 		}
 		return out_list
 	}
-}
-
-
-func main() {
-	size := 26
-	if len(os.Args) < 2 {
-		fmt.Println("using default size of %d",size)
-	} else {
-		var err error
-		size, err = strconv.Atoi(os.Args[1])
-		if err != nil {
-			fmt.Println(err)
-		}
-	}
-	to_sort := make([]int,size)
-	for i:=0; i < size; i++ {
-		to_sort[i] = size - i
-	}
-	fmt.Println(to_sort)
-	fmt.Println(ms(to_sort))
 }
