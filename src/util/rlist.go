@@ -20,5 +20,5 @@ func Rlist(size int) []int {
 	for i:=0; i < size; i++ {
 		list[i] = size - i
 	}
-	return shuffle(list)
+	return Shuffle(list)
 }
