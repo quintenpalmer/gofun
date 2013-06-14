@@ -59,7 +59,11 @@ func main() {
 			if err != nil {
 				fmt.Println(err)
 			}
-			fmt.Println(util.FibIndex(size))
+			if len(os.Args) > 3 && os.Args[3] == "list" {
+				fmt.Println(util.FibList(size))
+			} else {
+				fmt.Println(util.FibIndex(size))
+			}
 		}
 	}
 }
