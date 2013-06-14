@@ -4,7 +4,7 @@ import (
 	"math/rand"
 )
 
-func shuffle(in_list []int) []int {
+func Shuffle(in_list []int) []int {
 	size := len(in_list)
 	out_list := make([]int,0)
 	for i := size; i > 0; i-- {

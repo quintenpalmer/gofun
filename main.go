@@ -32,13 +32,12 @@ func main() {
 				}
 			}
 			var to_sort []int
+			to_sort = make([]int,size)
+			for i:=0; i < size; i++ {
+				to_sort[i] = size - i
+			}
 			if len(os.Args) > 3 && os.Args[3] == "rand" {
-				to_sort = util.Rlist(size)
-			} else {
-				to_sort = make([]int,size)
-				for i:=0; i < size; i++ {
-					to_sort[i] = size - i
-				}
+				to_sort = util.Shuffle(to_sort)
 			}
 			fmt.Println(to_sort)
 			fmt.Println(util.Ms(to_sort))
