@@ -64,6 +64,27 @@ func main() {
 			} else {
 				fmt.Println(util.FibIndex(size))
 			}
+		} else if os.Args[1] == "pascal" {
+			var err error
+			size, err = strconv.Atoi(os.Args[2])
+			if err != nil {
+				fmt.Println(err)
+			}
+			if len(os.Args) > 3 && os.Args[3] == "list" {
+				fmt.Println(util.FibList(size))
+			} else {
+				triangle := util.Pascal(size)
+				size = len(triangle)
+				for i, line := range triangle {
+					for j := 0; j < size - i; j++ {
+						fmt.Printf("   ")
+					}
+					for _, value := range line {
+						fmt.Printf(" %0-5d",value)
+					}
+					fmt.Printf("\n")
+				}
+			}
 		}
 	}
 }
