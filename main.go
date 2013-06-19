@@ -8,7 +8,7 @@ import (
 )
 
 func help() {
-	fmt.Println("Usage : \n  ms <size> [rand]\n  rlist <size>\n  fib <size> [list]\n  pascal <size>")
+	fmt.Println("Usage : \n  ms     <size> [rand]\n  rlist  <size>\n  fib    <size> [list]\n  pascal <size>")
 	os.Exit(1)
 }
 
