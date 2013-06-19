@@ -2,7 +2,7 @@ package util
 
 func FibIndex(index int) int {
 	old, curr := 0, 1
-	for i := 0; i < index; i++ {
+	for i := 0; i < index-2; i++ {
 		old, curr = curr, old+curr
 	}
 	return curr
